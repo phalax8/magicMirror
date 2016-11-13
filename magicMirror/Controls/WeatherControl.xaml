@@ -1,0 +1,86 @@
+﻿<UserControl
+    x:Class="magicMirror.Controls.WeatherControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:magicMirror.Controls"
+    xmlns:conv="using:magicMirror.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <conv:capitalizeConverter x:Key="capitalizeConverter"/>
+        <conv:formatTemperature x:Key="formatTemperature"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" FontSize="80" Margin="0,0,0,0" Text="{Binding City, Converter={StaticResource capitalizeConverter}}" />
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0" VerticalAlignment="Center">
+            <Image Source="ms-appx:///Assets/icon-Weather-Little-Snow.png" Height="128" Margin="0,0,0,10" VerticalAlignment="Top" />
+            <TextBlock TextAlignment="Center" FontSize="26.667" Margin="0, 10, 0, 0 " Text="{Binding Weather_now.Description}" />
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="133.333" Margin="0,-50,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Weather_now.Temp, Converter={StaticResource formatTemperature}}" />
+            <TextBlock Grid.Row="1" Grid.Column="0" FontSize="25">
+            	Máxima:
+            </TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="25" TextAlignment="Right" Text="{Binding Weather_now.Temp_max, Converter={StaticResource formatTemperature}}" />
+            <TextBlock Grid.Row="2" Grid.Column="0" FontSize="25">
+            	Míninima:
+            </TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="1" FontSize="25" TextAlignment="Right" Text="{Binding Weather_now.Temp_min, Converter={StaticResource formatTemperature}}" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="68,20,-10,0" d:LayoutOverrides="LeftPosition, RightPosition" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" FontSize="20" VerticalAlignment="Center" Text="LUN" />
+            <Image Grid.Row="0" Grid.Column="1" Source="ms-appx:///Assets/rain.png" Height="30" />
+            <TextBlock Grid.Row="0" Grid.Column="2" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Text="10º" />
+            <TextBlock Grid.Row="0" Grid.Column="3" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Text="20º" />
+
+            <TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" VerticalAlignment="Center">MAR</TextBlock>
+            <Image Grid.Row="1" Grid.Column="1" Source="ms-appx:///Assets/rain.png" Height="30" />
+            <TextBlock Grid.Row="1" Grid.Column="2" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Text="10º" />
+            <TextBlock Grid.Row="1" Grid.Column="3" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Text="20º" />
+
+            <TextBlock Grid.Row="2" Grid.Column="0" FontSize="20" VerticalAlignment="Center">MIE</TextBlock>
+            <Image Grid.Row="2" Grid.Column="1" Source="ms-appx:///Assets/rain.png" Height="30" />
+            <TextBlock Grid.Row="2" Grid.Column="2" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Text="10º" />
+            <TextBlock Grid.Row="2" Grid.Column="3" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" Text="20º" />
+
+        </Grid>
+
+    </Grid>
+</UserControl>

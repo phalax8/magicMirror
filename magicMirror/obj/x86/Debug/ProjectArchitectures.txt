@@ -1,0 +1,1 @@
+H:\proyectos\magicMirror\magicMirror\magicMirror.csproj;x86
